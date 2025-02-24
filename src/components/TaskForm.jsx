@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../features/TaskSlice";
 
 const TaskForm = () => {
-    const [form, setForm] = useState({ title: "", description: "",priority:"",status:"To-Do",createAT:new Date().toISOString()});
+    const [form, setForm] = useState({ title: "", description: "",priority:"",status:"To-Do",createAt:new Date().toISOString()});
     const dispatch = useDispatch();
-
+ 
     const handleSubmit = () => {
         if (form.title.trim() === ""||form.priority ==="") return;
         dispatch(addTask(form));
-        setForm({ title: "", description: "",priority:"",status:"To-Do",createAT:new Date().toISOString()});
+        setForm({ title: "", description: "",priority:"",status:"To-Do",createAt:new Date().toISOString()});
     };
 
     return (
