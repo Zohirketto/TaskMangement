@@ -16,9 +16,9 @@ const TaskSlice = createSlice({
               const list = {...action.payload,id:state.lastId}
               state.tasks=[...state.tasks,list]
         },
-        deleteTask:(state,action)=>{
-          const filtr = state.tasks.filter((elm)=>elm.id !== action.payload)
-          state.tasks=[filtr]
+        deleteTask: (state, action) => {
+          const { id } = action.payload;
+          state.tasks = state.tasks.filter((task) => task.id !== id);
         },
         ToggleChangeStatus: (state, action) => {
             const task = state.tasks.find(task => task.id === action.payload);
@@ -38,6 +38,6 @@ const TaskSlice = createSlice({
    
 
 })
-
+// zohir ketto
 export const {addTask,deleteTask,ToggleChangeStatus,clearAlltasks} = TaskSlice.actions
 export default TaskSlice.reducer

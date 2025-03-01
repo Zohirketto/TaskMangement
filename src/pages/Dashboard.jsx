@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"; 
 import TaskList from "../components/TaskList";
 import TaskForm from "../components/TaskForm";
 import { useDispatch } from "react-redux";
@@ -14,7 +14,7 @@ const Dashboard = () => {
       </button>
       <button className="add-task-btn" onClick={() => Dispatch(clearAlltasks())}>
         Clear All Tasks
-      </button>
+      </button>     
 
 
       {showForm && (
@@ -32,4 +32,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Dashboard; 
