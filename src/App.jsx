@@ -83,7 +83,7 @@ const App = () => {
             <div className="placeholder-card">
               <div className="placeholder-title">Firebase configuration required</div>
               <div className="placeholder-desc">
-                Create .env.local with your Firebase keys and restart the dev server.
+                Set Firebase env vars locally in .env.local or in Vercel Project Settings → Environment Variables (VITE_FIREBASE_*) and redeploy.
               </div>
             </div>
           </div>
