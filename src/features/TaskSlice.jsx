@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    tasks:[
-        {id:0,title:"task1",description:"fgggggggg",priority:"gggg",assign:0,status:"To-Do",createAt:"2025-02-22T10:00:00Z"},
-        {id:1,title:"task1",description:"fgggggggg",priority:"gggggg",assign:0,status:"To-Do",createAt:"2025-02-22T10:00:00Z"}
-    ],
+    tasks:[],
     lastId : 0
 }
 
@@ -11,10 +8,27 @@ const TaskSlice = createSlice({
     name:"task",
     initialState,
     reducers:{
+        setTasks:(state,action)=>{
+            state.tasks = action.payload || [];
+        },
         addTask:(state,action)=>{
              state.lastId += 1
               const list = {...action.payload,id:state.lastId}
               state.tasks=[...state.tasks,list]
+        },
+        setTaskStatus:(state, action)=>{
+          const { id, status } = action.payload
+          const task = state.tasks.find(t=>t.id===id)
+          if(task){
+            task.status = status
+          }
+        },
+        setTaskDueDate:(state, action)=>{
+          const { id, dueDate } = action.payload
+          const task = state.tasks.find(t=>t.id===id)
+          if(task){
+            task.dueDate = dueDate
+          }
         },
         deleteTask: (state, action) => {
           const { id } = action.payload;
@@ -38,6 +52,5 @@ const TaskSlice = createSlice({
    
 
 })
-// zohir ketto
-export const {addTask,deleteTask,ToggleChangeStatus,clearAlltasks} = TaskSlice.actions
+export const {setTasks,addTask,deleteTask,ToggleChangeStatus,clearAlltasks,setTaskStatus,setTaskDueDate} = TaskSlice.actions
 export default TaskSlice.reducer
